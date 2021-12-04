@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>E_commerceProject.data</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3"/>
+  </ItemGroup>
+   <ItemGroup>
+   <ProjectReference Include="..\E-commerceProject.entity\E-commerceProject.entity.csproj"/>
+  </ItemGroup>
+</Project>

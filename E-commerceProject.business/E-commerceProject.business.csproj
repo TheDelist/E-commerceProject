@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>E_commerceProject.business</RootNamespace>
+  </PropertyGroup>
+ <ItemGroup>
+   <ProjectReference Include="..\E-commerceProject.data\E-commerceProject.data.csproj"/>
+  </ItemGroup>
+   <ItemGroup>
+   <ProjectReference Include="..\E-commerceProject.entity\E-commerceProject.entity.csproj"/>
+  </ItemGroup>
+</Project>

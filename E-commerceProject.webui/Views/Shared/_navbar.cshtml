@@ -1,0 +1,37 @@
+<div class="navbar bg-danger navbar-dark navbar-expand-sm ">
+  <div class="container">
+
+    <a href="/" class="navbar-brand">E-commerce</a>
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+        <a class="nav-link" asp-controller="shop" asp-action="list">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" asp-controller="shop" asp-action="list">Cart</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" asp-controller="shop" asp-action="list">Orders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  asp-controller="admin" asp-action="createproduct">Add Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  asp-controller="admin" asp-action="productlist">Admin Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link 3</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link 4</a>
+      </li>
+    </ul>
+  
+  
+  
+    <form action="/product/list" class="d-flex">
+      <input name="q" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-light" type="submit">Search</button>
+    </form>
+  </div>
+
+</div>
