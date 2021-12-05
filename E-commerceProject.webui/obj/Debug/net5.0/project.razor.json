@@ -15639,6 +15639,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.webui\\Views\\Product\\List.cshtml",
+      "TargetPath": "Views\\Product\\List.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.webui\\Views\\Shared\\_product.cshtml",
       "TargetPath": "Views\\Shared\\_product.cshtml",
       "FileKind": "mvc"

@@ -108,7 +108,48 @@ namespace E_commerceProject.data.Concrete.MSSQL
 
         public Product GetProductDetails(string productname)
         {
-            throw new NotImplementedException();
+           Product product = null;
+            using (var connection = getSQLConnections())
+            {
+                try
+                {
+                    connection.Open();
+                    string sql = "SELECT * FROM Categories LEFT JOIN products ON products.CategoryID = Categories.CategoryID where products.ProductUrl=@Url;";
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("@Url", productname);
+                    SqlDataReader reader = command.ExecuteReader();
+                    reader.Read();
+                    if (reader.HasRows)
+                    {
+                        product = new Product()
+                        {
+                            ProductId = int.Parse(reader["ProductID"].ToString()),
+                            Name = reader["ProductName"].ToString(),
+                            CategoryId = int.Parse(reader["CategoryId"].ToString()),
+                            Category=new Category{
+                                Name = reader["CategoryName"].ToString(),
+                                CategoryId = int.Parse(reader["CategoryId"].ToString()),
+                                Description = reader["Description"]?.ToString(),
+                                Url = reader["Url"]?.ToString(),
+                            
+                            },
+                            Price = double.Parse(reader["Price"]?.ToString()),
+                            InStock = int.Parse(reader["InStock"]?.ToString()) == 1 ? true : false,
+                            ImageUrl = reader["ProductImage"]?.ToString(),
+                            Description = reader["ProductDescription"]?.ToString(),
+                            Url=reader["ProductUrl"]?.ToString()
+                        };
+
+                    }
+                    reader.Close();
+                }
+                catch (System.Exception)
+                {
+
+                    throw;
+                }
+            }
+            return product;
         }
 
         public List<Product> GetProductsByCategory(string name, int page, int pageSize)
@@ -120,7 +161,33 @@ namespace E_commerceProject.data.Concrete.MSSQL
         {
             throw new NotImplementedException();
         }
+        public int Count()
+        {
+            int count = 0;
+            using (var connection = getSQLConnections())
+            {
+                try
+                {
+                    connection.Open();
+                    string sql = "select count(*) from products";
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    object obj = command.ExecuteScalar();
+                    if (obj != null)
+                    {
+                        count = Convert.ToInt32(obj);
+                    }
 
+
+
+                }
+                catch (System.Exception)
+                {
+
+                    throw;
+                }
+            }
+            return count;
+        }
        
         
     }

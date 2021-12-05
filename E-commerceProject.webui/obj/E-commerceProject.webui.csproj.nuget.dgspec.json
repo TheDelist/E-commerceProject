@@ -1,17 +1,138 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.webui\\E-commerceProject.webui.csproj": {}
+    "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.webui\\E-commerceProject.webui.csproj": {}
   },
   "projects": {
-    "c:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.webui\\E-commerceProject.webui.csproj": {
+    "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.business\\E-commerceProject.business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.webui\\E-commerceProject.webui.csproj",
-        "projectName": "E-commerceProject.webui",
-        "projectPath": "c:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.webui\\E-commerceProject.webui.csproj",
+        "projectUniqueName": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.business\\E-commerceProject.business.csproj",
+        "projectName": "E-commerceProject.business",
+        "projectPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.business\\E-commerceProject.business.csproj",
         "packagesPath": "C:\\Users\\samke\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.webui\\obj\\",
+        "outputPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.business\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\samke\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.data\\E-commerceProject.data.csproj": {
+                "projectPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.data\\E-commerceProject.data.csproj"
+              },
+              "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.entity\\E-commerceProject.entity.csproj": {
+                "projectPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.entity\\E-commerceProject.entity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.data\\E-commerceProject.data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.data\\E-commerceProject.data.csproj",
+        "projectName": "E-commerceProject.data",
+        "projectPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.data\\E-commerceProject.data.csproj",
+        "packagesPath": "C:\\Users\\samke\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\samke\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.entity\\E-commerceProject.entity.csproj": {
+                "projectPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.entity\\E-commerceProject.entity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.entity\\E-commerceProject.entity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.entity\\E-commerceProject.entity.csproj",
+        "projectName": "E-commerceProject.entity",
+        "projectPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.entity\\E-commerceProject.entity.csproj",
+        "packagesPath": "C:\\Users\\samke\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.entity\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\samke\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -26,6 +147,68 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.webui\\E-commerceProject.webui.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.webui\\E-commerceProject.webui.csproj",
+        "projectName": "E-commerceProject.webui",
+        "projectPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.webui\\E-commerceProject.webui.csproj",
+        "packagesPath": "C:\\Users\\samke\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.webui\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\samke\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.business\\E-commerceProject.business.csproj": {
+                "projectPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.business\\E-commerceProject.business.csproj"
+              },
+              "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.data\\E-commerceProject.data.csproj": {
+                "projectPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.data\\E-commerceProject.data.csproj"
+              },
+              "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.entity\\E-commerceProject.entity.csproj": {
+                "projectPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.entity\\E-commerceProject.entity.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
