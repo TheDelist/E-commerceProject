@@ -59,11 +59,49 @@ namespace E_commerceProject.webui
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "about",
-                    pattern: "about",
-                    defaults:new {controller="Product",action="about"}
+                 endpoints.MapControllerRoute(
+                    name: "adminproductlist", 
+                    pattern: "admin/products",
+                    defaults: new {controller="Admin",action="ProductList"}
                 );
+                 endpoints.MapControllerRoute(
+                    name: "adminproductcreate", 
+                    pattern: "admin/products/create",
+                    defaults: new {controller="Admin",action="ProductCreate"}
+                );
+                   endpoints.MapControllerRoute(
+                    name: "adminproductedit", 
+                    pattern: "admin/products/{id?}",
+                    defaults: new {controller="Admin",action="ProductEdit"}
+                );
+                  endpoints.MapControllerRoute(
+                    name: "admincategories", 
+                    pattern: "admin/categories",
+                    defaults: new {controller="Admin",action="CategoryList"}
+                );
+                 endpoints.MapControllerRoute(
+                    name: "admincategoryedit", 
+                    pattern: "admin/categories/{id?}",
+                    defaults: new {controller="Admin",action="CategoryEdit"}
+                );
+
+                  endpoints.MapControllerRoute(
+                    name: "admincategorycreate", 
+                    pattern: "admin/categories/create",
+                    defaults: new {controller="Admin",action="CategoryCreate"}
+                );
+                   
+
+                //localhost/search
+                
+
+                 endpoints.MapControllerRoute(
+                    name: "search", 
+                    pattern: "Search",
+                    defaults: new {controller="Product",action="Search"}
+                );
+              
+               
                 endpoints.MapControllerRoute(
                     name: "products2",
                     pattern: "products",
@@ -75,17 +113,17 @@ namespace E_commerceProject.webui
                     pattern: "products/{category?}",
                     defaults:new {controller="Product",action="List"}
                 );
-              
 
                 endpoints.MapControllerRoute(
                     name: "productdetails",
                     pattern: "{url}",
                     defaults:new {controller="Product",action="details"}
                 );
-                
+
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                );
             });
         }
     }
