@@ -32,6 +32,11 @@ namespace E_commerceProject.business.Concrete
             return _productRepository.GetAll((int)page, (int)pageSize);
         }
 
+        public List<Product> GetAll()
+        {
+           return _productRepository.GetAll();
+        }
+
         public Product GetById(int id)
         {
             return _productRepository.GetById(id);

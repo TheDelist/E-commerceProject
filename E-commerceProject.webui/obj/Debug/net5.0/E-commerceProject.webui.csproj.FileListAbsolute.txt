@@ -59,3 +59,6 @@ C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.webui\obj\De
 C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\ref\E-commerceProject.webui.dll
 C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\E-commerceProject.webui.pdb
 C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\E-commerceProject.webui.genruntimeconfig.cache
+C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.webui\bin\Debug\net5.0\package-lock.json
+C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.webui\bin\Debug\net5.0\package.json
+C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Admin\ProductCreate.cshtml.g.cs

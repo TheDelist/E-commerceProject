@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BMgSwF3LJo9uFrr8hA5e0yEwJOvhwD9rlsv3HRpcuEjhK/X/JQPxqKWi9+fMQNMwhztMjPpiJ9IyXm00vBTi0A==",
+  "dgSpecHash": "jStnAGLUV+S86TjDu+j/edNfO/mCdgwAhOu89fFj2pzeX46MXW9+A763Im46QX1sWQY63Gep55kAg70JuotSEA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.webui\\E-commerceProject.webui.csproj",
+  "projectFilePath": "c:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.webui\\E-commerceProject.webui.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\samke\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\samke\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

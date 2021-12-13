@@ -1,24 +1,28 @@
 @model Product
 @*
-@section Categories{
-@await Component.InvokeAsync("Categories")
+    @section Categories{
+    @await Component.InvokeAsync("Categories")
 
-}
+    }
 *@
 <div class="card mb-3">
     <div class="card-body">
         <div class="row">
             <div class="col-md-3">
-                <img src="~/images/@Model.ImageUrl" class="card-img" alt="">
+                <img src="~/img/@Model.ImageUrl" class="card-img" alt="">
             </div>
-            <div class="col-md-9">
+            <div class="col-md-9 px-5">
 
-                <h5 class="card-title">
+                <h5 class="card-title p-4">
                     @Model.Name
                 </h5>
                 <p class="card-text">
                     @Model.Description
                 </p>
+                <h6 class="text primary p-3">
+                    @Model.Price <i class="fas fa-dollar-sign"></i>
+                </h6>
+                <button type="submit" class="btn btn-primary btn-lg p-3">Add To Cart</button>
                 <p class="card-text">
                     <small class="text-muted">
                         3 days ago

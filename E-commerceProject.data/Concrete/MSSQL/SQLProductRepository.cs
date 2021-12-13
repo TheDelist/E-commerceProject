@@ -14,11 +14,11 @@ namespace E_commerceProject.data.Concrete.MSSQL
          private SqlConnection getSQLConnections()
         {
             string connectionString = @"Data Source=.\SQLEXPRESS;Initial Catalog=e-commerce;Integrated Security=SSPI;";
-            //DRİVER PROVİDER
+            //DRIVER PROVIDER
             return new SqlConnection(connectionString);
 
         }
-        public int Create(Product entity)
+       public int Create(Product entity)
         {
             int result = 0;
             using (var connection = getSQLConnections())
@@ -26,12 +26,11 @@ namespace E_commerceProject.data.Concrete.MSSQL
                 try
                 {
                     connection.Open();
-                    string sql = "insert into products (ProductName,CategoryId,Price,InStock,ProductImage,ProductDescription,QuantityPerUnit,ProductUrl) values(@name,@categoryId,@price,@inStock,@Image,@Description,@Quantity,@Url)";
+                    string sql = "insert into products (ProductName,CategoryId,Price,ProductImage,ProductDescription,QuantityPerUnit,ProductUrl) values(@name,@categoryId,@price,@Image,@Description,@Quantity,@Url)";
                     SqlCommand command = new SqlCommand(sql, connection);
                     command.Parameters.AddWithValue("@price", entity.Price);
                     command.Parameters.AddWithValue("@name", entity.Name);
                     command.Parameters.AddWithValue("@categoryId", entity.CategoryId);
-                    command.Parameters.AddWithValue("@inStock", entity.InStock);
                     command.Parameters.AddWithValue("@Image", entity.ImageUrl);
                     command.Parameters.AddWithValue("@Description", entity.Description);
                     command.Parameters.AddWithValue("@Quantity", 1);
@@ -47,20 +46,16 @@ namespace E_commerceProject.data.Concrete.MSSQL
             }
             return result;
         }
-
         public void Delete(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Product> GetAll(int page, int pageSize)
-        {
-            throw new NotImplementedException();
-        }
+     
 
         public Product GetById(int id)
         {
-             Product product = null;
+            Product product = null;
             using (var connection = getSQLConnections())
             {
                 try
@@ -83,6 +78,7 @@ namespace E_commerceProject.data.Concrete.MSSQL
                             ImageUrl = reader["ProductImage"]?.ToString(),
                             Description = reader["ProductDescription"]?.ToString(),
                             Url=reader["ProductUrl"]?.ToString(),
+                            IsHome = int.Parse(reader["IsHome"]?.ToString()) == 1 ? true : false,
                         };
                     }
                     reader.Close();
@@ -101,14 +97,11 @@ namespace E_commerceProject.data.Concrete.MSSQL
             return product;
         }
 
-        public List<Product> GetPopularProducts()
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public Product GetProductDetails(string productname)
         {
-           Product product = null;
+            Product product = null;
             using (var connection = getSQLConnections())
             {
                 try
@@ -151,10 +144,52 @@ namespace E_commerceProject.data.Concrete.MSSQL
             }
             return product;
         }
-
-        public List<Product> GetProductsByCategory(string name, int page, int pageSize)
+       public List<Product> GetProductsByCategory(string name,int page,int pageSize)
         {
-            throw new NotImplementedException();
+            List<Product> productList = null;
+            using (var connection = getSQLConnections())
+            {
+                try
+                {
+                    connection.Open();
+                    string sql = "SELECT * FROM Categories INNER JOIN products ON products.CategoryID = Categories.CategoryID where Url IN (@name) ORDER BY ProductID OFFSET @offset ROWS FETCH NEXT @limit ROWS ONLY;";
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("@name", name);
+                    command.Parameters.AddWithValue("@offset", (page-1)*pageSize);
+                    command.Parameters.AddWithValue("@limit", pageSize);
+                    SqlDataReader reader = command.ExecuteReader();
+                    productList = new List<Product>();
+
+                    while (reader.Read())
+                    {
+                        productList.Add(new Product
+                        {
+                            ProductId = int.Parse(reader["ProductID"].ToString()),
+                            Name = reader["ProductName"].ToString(),
+                            CategoryId = int.Parse(reader["CategoryId"].ToString()),
+                            Price = double.Parse(reader["Price"]?.ToString()),
+                            InStock = int.Parse(reader["InStock"]?.ToString()) == 1 ? true : false,
+                            ImageUrl = reader["ProductImage"]?.ToString(),
+                            Description = reader["ProductDescription"]?.ToString(),
+                            Url=reader["ProductUrl"]?.ToString(),
+
+                        });
+
+                    }
+                    reader.Close();
+
+                }
+                catch (System.Exception)
+                {
+
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return productList;
         }
 
         public void Update(Product entity)
@@ -188,7 +223,100 @@ namespace E_commerceProject.data.Concrete.MSSQL
             }
             return count;
         }
-       
+
+       public List<Product> GetSearchResult(string searchString)
+        {
+           List<Product> productList = null;
+            using (var connection = getSQLConnections())
+            {
+                try
+                {
+                   
+                    connection.Open();
+                    string sql = "select * from products  WHERE (ProductName LIKE '%' +@search +'%') OR (ProductDescription LIKE '%'+ @search+ '%') ORDER BY ProductName";
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("@search", searchString);
+                    SqlDataReader reader = command.ExecuteReader();
+                    productList = new List<Product>();
+                    while (reader.Read())
+                    {
+                        productList.Add(new Product
+                        {
+                            ProductId = int.Parse(reader["ProductID"].ToString()),
+                            Name = reader["ProductName"].ToString(),
+                            CategoryId = int.Parse(reader["CategoryId"].ToString()),
+                            Price = double.Parse(reader["Price"]?.ToString()),
+                            InStock = int.Parse(reader["InStock"]?.ToString()) == 1 ? true : false,
+                            ImageUrl = reader["ProductImage"]?.ToString(),
+                            Description = reader["ProductDescription"]?.ToString(),
+                            Url=reader["ProductUrl"]?.ToString(),
+                        });
+                    }
+                    reader.Close();
+                }
+                catch (System.Exception)
+                {
+
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return productList;
+        }
+
         
+
+        public List<Product> GetHomePageProducts()
+        {
+            throw new NotImplementedException();
+        }
+
+       public int GetCountByCategory(string category)
+        {
+             int count = 0;
+            using (var connection = getSQLConnections())
+            {
+                try
+                {
+                    connection.Open();
+                    string sql = "SELECT COUNT(Categories.CategoryID) FROM Categories INNER JOIN products ON products.CategoryID = Categories.CategoryID where Url IN (@name);";
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("@name", category);
+                  
+                     object obj = command.ExecuteScalar();
+                    if (obj != null)
+                    {
+                        count = Convert.ToInt32(obj);
+                    }
+
+                }
+                catch (System.Exception)
+                {
+
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return count;
+        }
+        public List<Product> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+        public List<Product> GetAll(int? page, int? pageSize)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Product> GetPopularProducts()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

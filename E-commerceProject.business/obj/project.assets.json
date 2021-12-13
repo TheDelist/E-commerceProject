@@ -494,11 +494,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.business\\E-commerceProject.business.csproj",
+      "projectUniqueName": "c:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.business\\E-commerceProject.business.csproj",
       "projectName": "E-commerceProject.business",
-      "projectPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.business\\E-commerceProject.business.csproj",
+      "projectPath": "c:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.business\\E-commerceProject.business.csproj",
       "packagesPath": "C:\\Users\\samke\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.business\\obj\\",
+      "outputPath": "c:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.business\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\samke\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -513,11 +513,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.data\\E-commerceProject.data.csproj": {
-              "projectPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.data\\E-commerceProject.data.csproj"
+            "c:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.data\\E-commerceProject.data.csproj": {
+              "projectPath": "c:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.data\\E-commerceProject.data.csproj"
             },
-            "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.entity\\E-commerceProject.entity.csproj": {
-              "projectPath": "C:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.entity\\E-commerceProject.entity.csproj"
+            "c:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.entity\\E-commerceProject.entity.csproj": {
+              "projectPath": "c:\\Users\\samke\\Desktop\\web\\.net\\E-commerceProject\\E-commerceProject.entity\\E-commerceProject.entity.csproj"
             }
           }
         }

@@ -13,6 +13,7 @@ namespace E_commerceProject.business.Abstract
         Product GetById(int id);
 
         List<Product> GetAll(int? page,int? pageSize);
+        List<Product> GetAll();
 
         int Create(Product entity);
 
