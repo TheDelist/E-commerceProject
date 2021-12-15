@@ -10,13 +10,19 @@ namespace E_commerceProject.business.Concrete
 {
     public class ProductManager : IProductService
     {
-         private IProductRepository _productRepository;
+        private IProductRepository _productRepository;
 
         public ProductManager(IProductRepository productRepository)
         {
             _productRepository=productRepository;
             
         }
+
+        public int Count()
+        {
+           return _productRepository.Count();
+        }
+
         public int Create(Product entity)
         {
             return  _productRepository.Create(entity);
@@ -31,15 +37,25 @@ namespace E_commerceProject.business.Concrete
         {
             return _productRepository.GetAll((int)page, (int)pageSize);
         }
-
-        public List<Product> GetAll()
+          public List<Product> GetAll()
         {
-           return _productRepository.GetAll();
+            return _productRepository.GetAll();
         }
+
 
         public Product GetById(int id)
         {
             return _productRepository.GetById(id);
+        }
+
+        public int GetCountByCategory(string category)
+        {
+            return _productRepository.GetCountByCategory(category);
+        }
+
+        public List<Product> GetHomePageProducts()
+        {
+           return _productRepository.GetHomePageProducts();
         }
 
         public List<Product> GetProductByCategory(string productname,int page,int pageSize) 
@@ -47,17 +63,17 @@ namespace E_commerceProject.business.Concrete
             return _productRepository.GetProductsByCategory(productname, page, pageSize);
         }
 
-        public List<Product> GetProductByCategory(string name)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         public Product GetProductDetails(string productname)
         {
            return  _productRepository.GetProductDetails(productname);
         }
 
-        
+        public List<Product> GetSearchResult(string searchString)
+        {
+            return _productRepository.GetSearchResult(searchString);
+        }
 
         public void Update(Product entity)
         {

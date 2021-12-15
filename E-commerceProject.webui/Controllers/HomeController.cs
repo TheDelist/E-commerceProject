@@ -6,32 +6,35 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using E_commerceProject.webui.Models;
+using E_commerceProject.business.Abstract;
 
 namespace E_commerceProject.webui.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
+        private IProductService _productService;
+        public HomeController(IProductService productService){
+            _productService=productService;
         }
-
+        //localhost:5000/home/index
         public IActionResult Index()
         {
+            var productView = new ProductListViewModel()
+            {
+                ProductList =_productService.GetHomePageProducts()
+                
+            };
+            
+            return View(productView);
+        }
+        public IActionResult About()
+        {
             return View();
         }
-
-        public IActionResult Privacy()
+        public IActionResult Contact()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

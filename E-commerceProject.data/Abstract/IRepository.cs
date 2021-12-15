@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 namespace E_commerceProject.data.Abstract
 {
     public interface IRepository<T>
-    {  
-      T GetById(int id);
+    {
+        T GetById(int id);
 
-      
+
         List<T> GetAll();
 
         int Create(T entity);

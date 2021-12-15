@@ -1,0 +1,15 @@
+@model ProductListViewModel
+@{
+    Layout = "_Layout";
+}
+@{
+    var topProductClass = Model.ProductList.Count >= 2 ? "popular" : "";
+    var products = Model.ProductList;
+
+
+}
+@section Categories{
+    @await Component.InvokeAsync("Categories")
+
+}
+about

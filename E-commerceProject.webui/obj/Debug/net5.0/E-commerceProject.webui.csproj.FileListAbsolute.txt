@@ -62,3 +62,7 @@ C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.webui\obj\De
 C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.webui\bin\Debug\net5.0\package-lock.json
 C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.webui\bin\Debug\net5.0\package.json
 C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Admin\ProductCreate.cshtml.g.cs
+C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Home\About.cshtml.g.cs
+C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Home\Contact.cshtml.g.cs
+C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Product\Search.cshtml.g.cs
+C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Shared\_search.cshtml.g.cs

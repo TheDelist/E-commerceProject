@@ -51,8 +51,6 @@ namespace E_commerceProject.data.Concrete.MSSQL
             throw new NotImplementedException();
         }
 
-     
-
         public Product GetById(int id)
         {
             Product product = null;
@@ -130,7 +128,8 @@ namespace E_commerceProject.data.Concrete.MSSQL
                             InStock = int.Parse(reader["InStock"]?.ToString()) == 1 ? true : false,
                             ImageUrl = reader["ProductImage"]?.ToString(),
                             Description = reader["ProductDescription"]?.ToString(),
-                            Url=reader["ProductUrl"]?.ToString()
+                            Url=reader["ProductUrl"]?.ToString(),
+                             IsHome = int.Parse(reader["IsHome"]?.ToString()) == 1 ? true : false,
                         };
 
                     }
@@ -271,7 +270,46 @@ namespace E_commerceProject.data.Concrete.MSSQL
 
         public List<Product> GetHomePageProducts()
         {
-            throw new NotImplementedException();
+             List<Product> productList = null;
+            using (var connection = getSQLConnections())
+            {
+                try
+                {
+                   
+                    connection.Open();
+                    string sql = "select * from products where products.IsHome=1";
+                    SqlCommand command = new SqlCommand(sql, connection);
+                   
+                    SqlDataReader reader = command.ExecuteReader();
+                    productList = new List<Product>();
+                    while (reader.Read())
+                    {
+                        productList.Add(new Product
+                        {
+                            ProductId = int.Parse(reader["ProductID"].ToString()),
+                            Name = reader["ProductName"].ToString(),
+                            CategoryId = int.Parse(reader["CategoryId"].ToString()),
+                            Price = double.Parse(reader["Price"]?.ToString()),
+                            InStock = int.Parse(reader["InStock"]?.ToString()) == 1 ? true : false,
+                            ImageUrl = reader["ProductImage"]?.ToString(),
+                            Description = reader["ProductDescription"]?.ToString(),
+                            Url=reader["ProductUrl"]?.ToString(),
+                            IsHome=int.Parse(reader["IsHome"]?.ToString())==1 ?true:false,
+                        });
+                    }
+                    reader.Close();
+                }
+                catch (System.Exception)
+                {
+
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return productList;
         }
 
        public int GetCountByCategory(string category)
