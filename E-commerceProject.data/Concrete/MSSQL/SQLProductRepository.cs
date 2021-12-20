@@ -193,7 +193,34 @@ namespace E_commerceProject.data.Concrete.MSSQL
 
         public void Update(Product entity)
         {
-            throw new NotImplementedException();
+            using (var connection = getSQLConnections())
+            {
+                try
+                {
+                    connection.Open();
+                    string sql = "UPDATE Products SET ProductName=@productName, CategoryID=@CategoryId, Price=@unitPrice, InStock=@InStock, ProductImage=@Image, ProductDescription=@Description, ProductUrl=@Url, IsHome=@IsHome WHERE ProductID = @id";
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("@productName", entity.Name);
+                    command.Parameters.AddWithValue("@CategoryId", entity.CategoryId);
+                    command.Parameters.AddWithValue("@unitPrice", entity.Price);
+                    command.Parameters.AddWithValue("@InStock", entity.InStock);
+                    command.Parameters.AddWithValue("@Image", entity.ImageUrl);
+                    command.Parameters.AddWithValue("@Description", entity.Description);
+                    command.Parameters.AddWithValue("@Url", entity.Url);
+                    command.Parameters.AddWithValue("@IsHome", entity.IsHome);
+                    command.Parameters.AddWithValue("@id", entity.ProductId);
+
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
         }
         public int Count()
         {
@@ -275,7 +302,6 @@ namespace E_commerceProject.data.Concrete.MSSQL
             {
                 try
                 {
-                   
                     connection.Open();
                     string sql = "select * from products where products.IsHome=1";
                     SqlCommand command = new SqlCommand(sql, connection);
