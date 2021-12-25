@@ -18,7 +18,7 @@ namespace E_commerceProject.data.Concrete.MSSQL
         }
         public void Create(Category entity)
         {
-             using (var connection = getSqlConnection())
+            using (var connection = getSqlConnection())
             {
                 try
                 {

@@ -17,15 +17,14 @@ namespace E_commerceProject.business.Concrete
             _productRepository=productRepository;
             
         }
-
         public int Count()
         {
            return _productRepository.Count();
         }
 
-        public int Create(Product entity)
+        public void Create(Product entity)
         {
-            return  _productRepository.Create(entity);
+            _productRepository.Create(entity);
         }
 
         public void Delete(int id)
@@ -62,8 +61,6 @@ namespace E_commerceProject.business.Concrete
         {
             return _productRepository.GetProductsByCategory(productname, page, pageSize);
         }
-
-       
 
         public Product GetProductDetails(string productname)
         {

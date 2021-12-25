@@ -18,9 +18,8 @@ namespace E_commerceProject.data.Concrete.MSSQL
             return new SqlConnection(connectionString);
 
         }
-       public int Create(Product entity)
+       public void Create(Product entity)
         {
-            int result = 0;
             using (var connection = getSQLConnections())
             {
                 try
@@ -36,7 +35,7 @@ namespace E_commerceProject.data.Concrete.MSSQL
                     command.Parameters.AddWithValue("@Quantity", 1);
                     command.Parameters.AddWithValue("@Url", entity.Url);
 
-                    result = command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
                 }
                 catch (System.Exception)
                 {
@@ -44,7 +43,6 @@ namespace E_commerceProject.data.Concrete.MSSQL
                     throw;
                 }
             }
-            return result;
         }
         public void Delete(int id)
         {

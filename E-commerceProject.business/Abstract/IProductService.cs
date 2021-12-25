@@ -15,8 +15,7 @@ namespace E_commerceProject.business.Abstract
         List<Product> GetAll(int? page,int? pageSize);
         List<Product> GetAll();
 
-        int Create(Product entity);
-
+        void Create(Product entity);
         void Update(Product entity);
         void Delete(int id);
         int GetCountByCategory(string category);
