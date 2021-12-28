@@ -37,6 +37,11 @@ namespace E_commerceProject.business.Concrete
             return _categoryRepository.GetById(id);
         }
 
+        public Category GetByIdWithProducts(int categoryId)
+        {
+            return _categoryRepository.GetByIdWithProducts(categoryId);
+        }
+
         public void Update(Category entity)
         {
             _categoryRepository.Update(entity);

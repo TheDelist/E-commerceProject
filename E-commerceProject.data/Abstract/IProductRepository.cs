@@ -10,7 +10,6 @@ namespace E_commerceProject.data.Abstract
     {
         List<Product> GetProductsByCategory(string name, int page, int pageSize);
         Product GetProductDetails(string productname);
-        List<Product> GetPopularProducts();
         List<Product> GetSearchResult(string searchString);
         List<Product> GetAll(int? page, int? pageSize);
         List<Product> GetHomePageProducts();

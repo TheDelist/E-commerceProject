@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using E_commerceProject.entity;
 
-namespace E_commerceProject.data.Abstract
+namespace E_commerceProject.webui.Models
 {
-    public interface IOrderRepository : IRepository<Order>
+    public class CategoryListViewModel
     {
-        
+        public List<Category> Categories { get; set; }
     }
 }

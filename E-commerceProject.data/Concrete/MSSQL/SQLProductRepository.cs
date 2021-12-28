@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-
 using System.Threading.Tasks;
 using E_commerceProject.data.Abstract;
 using E_commerceProject.entity;
@@ -42,11 +41,34 @@ namespace E_commerceProject.data.Concrete.MSSQL
 
                     throw;
                 }
+                finally
+                {
+                    connection.Close();
+                }
             }
         }
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            using (var connection = getSQLConnections())
+            {
+                try
+                {
+                    connection.Open();
+                    string sql = "DELETE FROM Products WHERE ProductID = @id";
+                    SqlCommand command = new SqlCommand(sql, connection);
+
+                    command.Parameters.AddWithValue("@id", id);
+                    command.ExecuteNonQuery();
+                }
+                catch (System.Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
         }
 
         public Product GetById(int id)
@@ -60,6 +82,7 @@ namespace E_commerceProject.data.Concrete.MSSQL
                     string sql = "select * from products where ProductID=@productId";
                     SqlCommand command = new SqlCommand(sql, connection);
                     command.Parameters.AddWithValue("@productId", id);
+
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Read();
                     if (reader.HasRows)
@@ -75,6 +98,7 @@ namespace E_commerceProject.data.Concrete.MSSQL
                             Description = reader["ProductDescription"]?.ToString(),
                             Url=reader["ProductUrl"]?.ToString(),
                             IsHome = int.Parse(reader["IsHome"]?.ToString()) == 1 ? true : false,
+                            Quantity = int.Parse(reader["QuantityPerUnit"].ToString())
                         };
                     }
                     reader.Close();
@@ -82,7 +106,6 @@ namespace E_commerceProject.data.Concrete.MSSQL
                 }
                 catch (System.Exception)
                 {
-
                     throw;
                 }
                 finally
@@ -92,8 +115,6 @@ namespace E_commerceProject.data.Concrete.MSSQL
             }
             return product;
         }
-
-      
 
         public Product GetProductDetails(string productname)
         {
@@ -106,6 +127,7 @@ namespace E_commerceProject.data.Concrete.MSSQL
                     string sql = "SELECT * FROM Categories LEFT JOIN products ON products.CategoryID = Categories.CategoryID where products.ProductUrl=@Url;";
                     SqlCommand command = new SqlCommand(sql, connection);
                     command.Parameters.AddWithValue("@Url", productname);
+
                     SqlDataReader reader = command.ExecuteReader();
                     reader.Read();
                     if (reader.HasRows)
@@ -118,24 +140,20 @@ namespace E_commerceProject.data.Concrete.MSSQL
                             Category=new Category{
                                 Name = reader["CategoryName"].ToString(),
                                 CategoryId = int.Parse(reader["CategoryId"].ToString()),
-                                Description = reader["Description"]?.ToString(),
                                 Url = reader["Url"]?.ToString(),
-                            
                             },
                             Price = double.Parse(reader["Price"]?.ToString()),
                             InStock = int.Parse(reader["InStock"]?.ToString()) == 1 ? true : false,
                             ImageUrl = reader["ProductImage"]?.ToString(),
                             Description = reader["ProductDescription"]?.ToString(),
                             Url=reader["ProductUrl"]?.ToString(),
-                             IsHome = int.Parse(reader["IsHome"]?.ToString()) == 1 ? true : false,
+                            IsHome = int.Parse(reader["IsHome"]?.ToString()) == 1 ? true : false,
                         };
-
                     }
                     reader.Close();
                 }
                 catch (System.Exception)
                 {
-
                     throw;
                 }
             }
@@ -149,14 +167,15 @@ namespace E_commerceProject.data.Concrete.MSSQL
                 try
                 {
                     connection.Open();
-                    string sql = "SELECT * FROM Categories INNER JOIN products ON products.CategoryID = Categories.CategoryID where Url IN (@name) ORDER BY ProductID OFFSET @offset ROWS FETCH NEXT @limit ROWS ONLY;";
+                    //string sql = "SELECT * FROM Categories INNER JOIN products ON products.CategoryID = Categories.CategoryID where Url IN (@name) ORDER BY ProductID OFFSET @offset ROWS FETCH NEXT @limit ROWS ONLY;";
+                    string sql = "SELECT * FROM Categories, Products WHERE products.CategoryID = Categories.CategoryID AND Categories.Url IN (@name) ORDER BY ProductID OFFSET @offset ROWS FETCH NEXT @limit ROWS ONLY;";
                     SqlCommand command = new SqlCommand(sql, connection);
                     command.Parameters.AddWithValue("@name", name);
                     command.Parameters.AddWithValue("@offset", (page-1)*pageSize);
                     command.Parameters.AddWithValue("@limit", pageSize);
+
                     SqlDataReader reader = command.ExecuteReader();
                     productList = new List<Product>();
-
                     while (reader.Read())
                     {
                         productList.Add(new Product
@@ -171,14 +190,11 @@ namespace E_commerceProject.data.Concrete.MSSQL
                             Url=reader["ProductUrl"]?.ToString(),
 
                         });
-
                     }
                     reader.Close();
-
                 }
                 catch (System.Exception)
                 {
-
                     throw;
                 }
                 finally
@@ -196,7 +212,7 @@ namespace E_commerceProject.data.Concrete.MSSQL
                 try
                 {
                     connection.Open();
-                    string sql = "UPDATE Products SET ProductName=@productName, CategoryID=@CategoryId, Price=@unitPrice, InStock=@InStock, ProductImage=@Image, ProductDescription=@Description, ProductUrl=@Url, IsHome=@IsHome WHERE ProductID = @id";
+                    string sql = "UPDATE Products SET ProductName=@productName, CategoryID=@CategoryId, Price=@unitPrice, InStock=@InStock, ProductImage=@Image, ProductDescription=@Description, QuantityPerUnit=@Quantity, ProductUrl=@Url, IsHome=@IsHome WHERE ProductID = @id";
                     SqlCommand command = new SqlCommand(sql, connection);
                     command.Parameters.AddWithValue("@productName", entity.Name);
                     command.Parameters.AddWithValue("@CategoryId", entity.CategoryId);
@@ -204,6 +220,7 @@ namespace E_commerceProject.data.Concrete.MSSQL
                     command.Parameters.AddWithValue("@InStock", entity.InStock);
                     command.Parameters.AddWithValue("@Image", entity.ImageUrl);
                     command.Parameters.AddWithValue("@Description", entity.Description);
+                    command.Parameters.AddWithValue("@Quantity", entity.Quantity);
                     command.Parameters.AddWithValue("@Url", entity.Url);
                     command.Parameters.AddWithValue("@IsHome", entity.IsHome);
                     command.Parameters.AddWithValue("@id", entity.ProductId);
@@ -235,13 +252,9 @@ namespace E_commerceProject.data.Concrete.MSSQL
                     {
                         count = Convert.ToInt32(obj);
                     }
-
-
-
                 }
                 catch (System.Exception)
                 {
-
                     throw;
                 }
             }
@@ -255,11 +268,11 @@ namespace E_commerceProject.data.Concrete.MSSQL
             {
                 try
                 {
-                   
                     connection.Open();
                     string sql = "select * from products  WHERE (ProductName LIKE '%' +@search +'%') OR (ProductDescription LIKE '%'+ @search+ '%') ORDER BY ProductName";
                     SqlCommand command = new SqlCommand(sql, connection);
                     command.Parameters.AddWithValue("@search", searchString);
+
                     SqlDataReader reader = command.ExecuteReader();
                     productList = new List<Product>();
                     while (reader.Read())
@@ -280,7 +293,6 @@ namespace E_commerceProject.data.Concrete.MSSQL
                 }
                 catch (System.Exception)
                 {
-
                     throw;
                 }
                 finally
@@ -290,8 +302,6 @@ namespace E_commerceProject.data.Concrete.MSSQL
             }
             return productList;
         }
-
-        
 
         public List<Product> GetHomePageProducts()
         {
@@ -325,7 +335,6 @@ namespace E_commerceProject.data.Concrete.MSSQL
                 }
                 catch (System.Exception)
                 {
-
                     throw;
                 }
                 finally
@@ -338,7 +347,7 @@ namespace E_commerceProject.data.Concrete.MSSQL
 
        public int GetCountByCategory(string category)
         {
-             int count = 0;
+            int count = 0;
             using (var connection = getSQLConnections())
             {
                 try
@@ -348,16 +357,14 @@ namespace E_commerceProject.data.Concrete.MSSQL
                     SqlCommand command = new SqlCommand(sql, connection);
                     command.Parameters.AddWithValue("@name", category);
                   
-                     object obj = command.ExecuteScalar();
+                    object obj = command.ExecuteScalar();
                     if (obj != null)
                     {
                         count = Convert.ToInt32(obj);
                     }
-
                 }
                 catch (System.Exception)
                 {
-
                     throw;
                 }
                 finally
@@ -369,16 +376,90 @@ namespace E_commerceProject.data.Concrete.MSSQL
         }
         public List<Product> GetAll()
         {
-            throw new NotImplementedException();
+            List<Product> products = null;
+            using (var connection = getSQLConnections())
+            {
+                try
+                {
+                    connection.Open();
+                    string sql = "SELECT * FROM Products";
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    products = new List<Product>();
+                    while (reader.Read())
+                    {
+                        products.Add(
+                            new Product
+                            {
+                                ProductId = int.Parse(reader["ProductID"].ToString()),
+                                Name = reader["ProductName"].ToString(),
+                                CategoryId = int.Parse(reader["CategoryId"].ToString()),
+                                Price = double.Parse(reader["Price"]?.ToString()),
+                                InStock = int.Parse(reader["InStock"]?.ToString()) == 1 ? true : false,
+                                ImageUrl = reader["ProductImage"].ToString(),
+                                Description = reader["ProductDescription"].ToString(),
+                                Url = reader["ProductUrl"]?.ToString(),
+                                IsHome = int.Parse(reader["IsHome"]?.ToString()) == 1 ? true : false,
+                            }
+                        );
+                    }
+                    reader.Close();
+                }
+                catch (System.Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return products;
         }
         public List<Product> GetAll(int? page, int? pageSize)
         {
-            throw new NotImplementedException();
-        }
+            List<Product> products = null;
+            using (var connection = getSQLConnections())
+            {
+                try
+                {
+                    connection.Open();
+                    string sql = "SELECT * FROM Products ORDER BY ProductID OFFSET @offset ROWS FETCH NEXT @limit ROWS ONLY";
+                    SqlCommand command = new SqlCommand(sql, connection);
+                    command.Parameters.AddWithValue("@offset", (page - 1) * pageSize);
+                    command.Parameters.AddWithValue("@limit", pageSize);
 
-        public List<Product> GetPopularProducts()
-        {
-            throw new NotImplementedException();
+                    SqlDataReader reader = command.ExecuteReader();
+                    products = new List<Product>();
+                    while (reader.Read())
+                    {
+                        products.Add(
+                            new Product
+                            {
+                                ProductId = int.Parse(reader["ProductID"].ToString()),
+                                Name = reader["ProductName"].ToString(),
+                                CategoryId = int.Parse(reader["CategoryId"].ToString()),
+                                Price = double.Parse(reader["Price"]?.ToString()),
+                                InStock = int.Parse(reader["InStock"]?.ToString()) == 1 ? true : false,
+                                ImageUrl = reader["ProductImage"].ToString(),
+                                Description = reader["ProductDescription"].ToString(),
+                                Url = reader["ProductUrl"]?.ToString(),
+                                IsHome = int.Parse(reader["IsHome"]?.ToString()) == 1 ? true : false,
+                            }
+                        );
+                    }
+                    reader.Close();
+                }
+                catch (System.Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+            return products;
         }
     }
 }

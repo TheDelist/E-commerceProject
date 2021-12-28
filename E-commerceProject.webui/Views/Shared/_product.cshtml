@@ -1,6 +1,6 @@
 @model Product
 
-<div class="card">
+<div class="card mb-2">
   <img class="card-img-top" src="~/img/@Model.ImageUrl" alt="">
   <div class="card-body">
     <h5 class="card-title">@Model.Name</h5>
@@ -9,13 +9,11 @@
         @Model.Price
       </i>
     </small>
-    <div class="card-footer text-center">
-      <a asp-controller="Product" asp-action="Details" asp-route-url=@Model.Url
-      class="btn btn-primary btn-sm">Details</a>
-      <a asp-controller="Product" asp-action="addtocart" asp-route-id=@Model.ProductId
-      class="btn btn-primary btn-sm">Add To Cart</a>
-    </div>
-    
-    
+  </div>
+  <div class="card-footer text-center">
+    <a asp-controller="Product" asp-action="Details" asp-route-url=@Model.Url
+    class="btn btn-primary btn-sm">Details</a>
+    <a asp-controller="Product" asp-action="addtocart" asp-route-id=@Model.ProductId
+    class="btn btn-primary btn-sm">Add To Cart</a>
   </div>
 </div>

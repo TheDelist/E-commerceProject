@@ -1,6 +1,6 @@
 ﻿@model ProductListViewModel
 
-
+@await Html.PartialAsync("_slider")
 
 <div class="row">
   <section class="section-content padding-y-sm">
@@ -43,34 +43,33 @@
 
     </div> <!-- container .//  -->
   </section>
-   <h3 class="h1 fw-bold p-2">Popular Products</h3>
-  <div class="col-md-3">
-    @* kategoriler geldikten sonra aç *@
-    @* @await Component.InvokeAsync("Categories") *@
-  </div>
-  <div class="col-md-9">
+  <h3 class="h1 fw-bold p-2">Popular Products</h3>
 
-    @if (Model.ProductList.Count == 0)
-    {
-      @await Html.PartialAsync("_noproduct")
-
-    }
-    else
-    {
-      <div class="row">
-       
-        @foreach (var item in Model.ProductList)
-        {
-
-          <div class="col-md-4 py-3">
-            @await Html.PartialAsync("_product",item)
-          </div>
-
-        }
-      </div>
-    }
+  <div class="row">
+    <div class="col-md-3">
+      @await Component.InvokeAsync("Categories") 
+    </div>
+    
+    <div class="col-md-9">
+      @if (Model.ProductList.Count == 0)
+      {
+        @await Html.PartialAsync("_noproduct")
+      }
+      else
+      {
+        <div class="row">
+          @foreach (var item in Model.ProductList)
+          {
+            <div class="col-md-4 ">
+              @await Html.PartialAsync("_product",item)
+            </div>
+          }
+        </div>
+      }  
+    </div>
   </div>
 </div>
+  
 
 
 @section Scripts{

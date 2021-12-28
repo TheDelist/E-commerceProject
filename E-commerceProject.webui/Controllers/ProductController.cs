@@ -10,21 +10,18 @@ using Microsoft.Extensions.Logging;
 
 namespace E_commerceProject.webui.Controllers
 {
-  
     public class ProductController : Controller
     {
         private IProductService _productService;
-
         public ProductController(IProductService productService)
         {
             _productService=productService;
         }
 
-         //localhost/products/telefon?page=1
-        
+        //localhost/products/telefon?page=1
         public IActionResult List(string category, int page = 1)
         {
-            const int pageSize = 1;
+            const int pageSize = 3;
             ProductListViewModel productView;
             
             if (string.IsNullOrEmpty(category))
@@ -44,7 +41,6 @@ namespace E_commerceProject.webui.Controllers
             }
             else
             {
-               
                 productView = new ProductListViewModel()
                 {
                     PageInfo=new PageInfo(){
@@ -57,14 +53,11 @@ namespace E_commerceProject.webui.Controllers
                     ProductList = _productService.GetProductByCategory(category, page, pageSize)
                 };
             }
-
             return View(productView);
         }
 
-        
-
         public IActionResult Details(string url){
-              if (string.IsNullOrEmpty(url))
+            if (string.IsNullOrEmpty(url))
             {
                 return NotFound();
             }
@@ -73,19 +66,15 @@ namespace E_commerceProject.webui.Controllers
             {
                 return NotFound();
             }
-
             return View(product);
         }
 
-         public IActionResult Search (string q){
-            
-            ProductListViewModel productView; 
-                productView = new ProductListViewModel()
-                {
-                    
-                    ProductList = _productService.GetSearchResult(q)
-                };
-
+        public IActionResult Search(string q)
+        {   
+            var productView = new ProductListViewModel()
+            {
+                ProductList = _productService.GetSearchResult(q)
+            };
             return View(productView);
         }
     }

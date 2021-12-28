@@ -1,15 +1,4 @@
-@model ProductListViewModel
-@{
-    Layout = "_Layout";
-}
-@{
-    var topProductClass = Model.ProductList.Count >= 2 ? "popular" : "";
-    var products = Model.ProductList;
 
+@* @await Component.InvokeAsync("Categories") *@
 
-}
-@section Categories{
-    @await Component.InvokeAsync("Categories")
-
-}
-about
+31

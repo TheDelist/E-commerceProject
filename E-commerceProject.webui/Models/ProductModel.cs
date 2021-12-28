@@ -9,7 +9,7 @@ namespace E_commerceProject.webui.Models
 {
     public class ProductModel
     {
-         public int ProductId { get; set; }
+        public int ProductId { get; set; }
         public string Name { get; set; }
         public double? Price { get; set; }
         public string Description { get; set; }
@@ -18,7 +18,6 @@ namespace E_commerceProject.webui.Models
         public bool IsHome { get; set; }
         public string Url { get; set; }
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
-        public List<SelectListItem> ListOfCategories {get; set;}
+        public int Quantity { get; set; }
     }
 }

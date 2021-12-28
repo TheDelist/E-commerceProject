@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using E_commerceProject.business.Abstract;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 
 namespace E_commerceProject.webui
@@ -27,12 +29,14 @@ namespace E_commerceProject.webui
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-             services.AddScoped<IProductRepository,SQLProductRepository>();
-           
-
-           
-            services.AddScoped<IProductService,ProductManager>();
+            // MVC, Razor Pages
             services.AddControllersWithViews();
+            // Repository name can be changed by here.
+            services.AddScoped<IProductRepository,SQLProductRepository>();
+            services.AddScoped<IProductService,ProductManager>();
+
+            services.AddScoped<ICategoryRepository,SQLCategoryRepository>();
+            services.AddScoped<ICategoryService,CategoryManager>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,15 +52,16 @@ namespace E_commerceProject.webui
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-           // app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
             // app.UseAuthorization();
-             app.UseRouting();
-            app.UseStaticFiles();
-
-           
-
-          
-
+            app.UseRouting();
+            app.UseStaticFiles(); // wwwroot
+            app.UseStaticFiles(new StaticFileOptions //node modules
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"node_modules")),
+                RequestPath="/modules"
+            });
+            
             app.UseEndpoints(endpoints =>
             {
                  endpoints.MapControllerRoute(
