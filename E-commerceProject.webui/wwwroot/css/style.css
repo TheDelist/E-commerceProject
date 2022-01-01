@@ -33,7 +33,10 @@ a:hover {
 }
 
 /* =================  DEFINED VARIABLES =================== */
-.icon-xs, .icon-sm, .icon-md, .icon-lg {
+.icon-xs,
+.icon-sm,
+.icon-md,
+.icon-lg {
   display: inline-block;
   text-align: center;
   flex-shrink: 0;
@@ -68,7 +71,6 @@ a:hover {
   font-size: 42px;
 }
 
-
 .header-top-light .nav-link {
   color: #969696;
 }
@@ -82,7 +84,8 @@ a:hover {
   padding-bottom: 1rem;
 }
 
-.brand-wrap .logo, .navbar-brand .logo {
+.brand-wrap .logo,
+.navbar-brand .logo {
   margin-right: 7px;
   max-height: 42px;
   display: inline-block;
@@ -125,9 +128,8 @@ a:hover {
   color: #3167eb;
 }
 
-
 .btn-facebook {
-  background-color: #405D9D;
+  background-color: #405d9d;
   color: #fff;
 }
 .btn-facebook:hover {
@@ -135,7 +137,7 @@ a:hover {
 }
 
 .btn-instagram {
-  background-color: #E52D27;
+  background-color: #e52d27;
   color: #fff;
 }
 .btn-instagram:hover {
@@ -143,7 +145,7 @@ a:hover {
 }
 
 .btn-youtube {
-  background-color: #C8046C;
+  background-color: #c8046c;
   color: #fff;
 }
 .btn-youtube:hover {
@@ -151,7 +153,7 @@ a:hover {
 }
 
 .btn-twitter {
-  background-color: #42AEEC;
+  background-color: #42aeec;
   color: #fff;
 }
 .btn-twitter:hover {
@@ -175,8 +177,6 @@ a:hover {
 .btn-icon i {
   line-height: 1;
 }
-
-
 
 .list-normal {
   list-style: none;
@@ -209,8 +209,6 @@ a:hover {
   color: #3167eb;
 }
 
-
-
 .icontext {
   display: inline-flex;
   align-items: center;
@@ -230,14 +228,13 @@ a:hover {
   flex-grow: 0;
 }
 
-.slider-img{
-  width:100%;
-height:auto;
-
+.slider-img {
+  width: 100%;
+  height: auto;
 }
-.slider.slider-horizontal{
-  width:1200px !important;
+.slider.slider-horizontal {
+  width: 1200px !important;
   perspective: 1200px;
- 
+
   margin: auto auto auto auto;
-  }
+}

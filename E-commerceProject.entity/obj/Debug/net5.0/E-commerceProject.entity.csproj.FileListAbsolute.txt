@@ -10,3 +10,15 @@ C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.entity\obj\D
 C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.entity\obj\Debug\net5.0\E-commerceProject.entity.dll
 C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.entity\obj\Debug\net5.0\ref\E-commerceProject.entity.dll
 C:\Users\samke\Desktop\web\.net\E-commerceProject\E-commerceProject.entity\obj\Debug\net5.0\E-commerceProject.entity.pdb
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.entity\bin\Debug\net5.0\E-commerceProject.entity.deps.json
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.entity\bin\Debug\net5.0\E-commerceProject.entity.dll
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.entity\bin\Debug\net5.0\ref\E-commerceProject.entity.dll
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.entity\bin\Debug\net5.0\E-commerceProject.entity.pdb
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.entity\obj\Debug\net5.0\E-commerceProject.entity.csproj.AssemblyReference.cache
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.entity\obj\Debug\net5.0\E-commerceProject.entity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.entity\obj\Debug\net5.0\E-commerceProject.entity.AssemblyInfoInputs.cache
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.entity\obj\Debug\net5.0\E-commerceProject.entity.AssemblyInfo.cs
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.entity\obj\Debug\net5.0\E-commerceProject.entity.csproj.CoreCompileInputs.cache
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.entity\obj\Debug\net5.0\E-commerceProject.entity.dll
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.entity\obj\Debug\net5.0\ref\E-commerceProject.entity.dll
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.entity\obj\Debug\net5.0\E-commerceProject.entity.pdb

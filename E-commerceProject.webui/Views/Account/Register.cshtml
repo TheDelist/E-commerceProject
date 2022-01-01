@@ -1,0 +1,99 @@
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout3.cshtml";
+}<h1>Register </h1>
+<div class="clear-loading spinner">
+    <span></span>
+</div>
+<div class="w3ls-login box box--big">
+    <!-- form starts here -->
+    <form action="VerifyReg" method="post">
+
+        <div class="agile-field-txt">
+
+            <label><i class="fa fa-user-circle" aria-hidden="true"></i> Username </label>
+            <input type="text" name="Username" placeholder="Your Username" required="" />
+        </div>
+        <div class="agile-field-txt">
+            <label><i class="fa fa-user" aria-hidden="true"></i> Name </label>
+            <input type="text" name="Name" placeholder="Your name" required="" />
+        </div>
+        <div class="agile-field-txt">
+            <label><i class="fa fa-user" aria-hidden="true"></i> Surname </label>
+            <input type="text" name="Surname" placeholder="Your surname" required="" />
+        </div>
+        <div class="agile-field-txt">
+            <label><i class="fa fa-user" aria-hidden="true"></i> Email </label>
+            <input type="text" name="Email" placeholder="email@adress.com" required="" />
+        </div>
+
+
+
+        <label><i class="fa fa-venus-mars" aria-hidden="true"></i> Sex </label>
+        <div class="agile-field-txt"></div>
+
+
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="Sex" id="inlineRadio1" value="option1">
+            <label class="form-check-label" for="inlineRadio1">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="Sex" id="inlineRadio2" value="option2">
+            <label class="form-check-label" for="inlineRadio2">Female</label>
+        </div>
+
+
+        <div class="agile-field-txt"></div>
+
+        <label><i class="fa fa-calendar" aria-hidden="true"></i> BirthDate </label>
+        <div class="agile-field-txt"></div>
+        <input type="date" id="birthday" name="BirthDate">
+        <div class="agile-field-txt"></div>
+
+        <div class="agile-field-txt">
+
+            <label><i class="fa fa-phone" aria-hidden="true"></i> Phone </label>
+            <input type="text" name="Phone" placeholder="(123)456-7890" required="" />
+        </div>
+
+        <div class="agile-field-txt">
+            <label><i class="fa fa-address-card" aria-hidden="true"></i> Address </label>
+            <input type="text" name="Address" required="" placeholder="1234 Main St, Apartment, studio, or floor" />
+        </div>
+
+        <div class="agile-field-txt">
+            <label><i class="fa fa-unlock-alt" aria-hidden="true"></i> Password </label>
+            <input type="password" name="Password" placeholder="Enter Password" required="" id="myInput" />
+            <div class="agile_label">
+                <input id="check3" name="check3" type="checkbox" value="show password" onclick="myFunction()">
+                <label class="check" for="check3">Show password</label>
+            </div>
+            <div class="agile-right">
+                <a href="#">forgot password?</a>
+            </div>
+        </div>
+
+        <!-- script for show password -->
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myInput");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            }
+        </script>
+        <!-- //end script -->
+        <input type="submit" value="REGISTER">
+
+    </form>
+</div>
+<!-- //form ends here -->
+<!--copyright-->
+<div class="copy-wthree">
+    <p>© 2021 E-Commerce Project . All Rights Reserved |
+        <a href="https://localhost:5001/" target="_blank">E-Commerce.Net</a>
+    </p>
+</div>
+<!--//copyright-->
