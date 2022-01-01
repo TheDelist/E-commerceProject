@@ -46,5 +46,12 @@ namespace E_commerceProject.business.Concrete
         {
             _categoryRepository.Update(entity);
         }
+
+        public string ErrorMessage { get; set; }
+
+        public bool Validation(Category entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

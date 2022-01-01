@@ -6,48 +6,48 @@
 <hr>
 <div class="row">
     <div class="col-md-8">
-        <form asp-controller="Admin" asp-action="ProductCreate" method="post">
+        <form asp-controller="Admin" asp-action="ProductCreate" method="post" enctype="multipart/form-data">
+            
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group row mb-3">
                 <label asp-for="Name" class="col-sm-2 form-label"></label>
                 <div class="col-sm-10">
                     <input class="form-control" asp-for="Name" placeholder="xiaomi 11t">
+                    <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row mb-3">
                 <label asp-for="Url" class="col-sm-2 form-label"></label>
                 <div class="col-sm-10">
                     <input class="form-control" asp-for="Url" placeholder="xiaomi-11t-8gb-256gb">
+                    <span asp-validation-for="Url" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row mb-3">
                 <label asp-for="Description" class="col-sm-2 form-label"></label>
                 <div class="col-sm-10">
                     <textarea id="editor" class="form-control" asp-for="Description" placeholder="features"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
             </div>
             <div class="form-group row mb-3">
-                <label asp-for="ImageUrl" class="col-sm-2 form-label"></label>
+                <label asp-for="ImageUrl" class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-10">
-                    <input class="form-control" asp-for="ImageUrl" placeholder="2.jpg">
+                    <input type="hidden" asp-for="ImageUrl">
+                    <input type="file" name="file"> 
                 </div>
             </div>
             <div class="form-group row mb-3">
                 <label asp-for="Price" class="col-sm-2 form-label"></label>
                 <div class="col-sm-10">
                     <input class="form-control" asp-for="Price" placeholder="5500">
+                    <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
             </div>
-            <div class="form-group row">
-                <label asp-for="CategoryId" class="col-sm-2 col-form-label"></label>
-                <div class="col-sm-10">
-                    <input class="form-control" asp-for="CategoryId" placeholder="1">
-                </div>
+            <div>
+                <label  class="col-sm-2 form-label">Category</label>
+                @Html.DropDownListFor(m => m.CategoryId, Model.allcategories, "---Please select category---")
             </div>
-            @* <div class="form-group row mb-3">
-                <select asp-for="CategoryId" class="form-control"
-                    asp-items="@(new SelectList(ViewBag.ListOfCategories,"Value","Text"))"></select>
-
-            </div> *@
             <div class="form-group row mb-3">
                 <div class="col-sm-10 offset-sm-2">
                     <button type="submit" class="btn btn-primary">Create Product</button>
@@ -59,8 +59,8 @@
 </div>
 
 @section Scripts{
-<script src="/modules/ckeditor/ckeditor.js"></script>
-<script>
-    CKEDITOR.replace('editor');
-</script>
+    <script src="/modules/ckeditor/ckeditor.js"></script>
+    <script> CKEDITOR.replace('editor');</script>
+    <script src="/modules/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
 }

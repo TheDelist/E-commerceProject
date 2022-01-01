@@ -36,8 +36,7 @@ namespace E_commerceProject.webui.Controllers
 
                     },
                     ProductList = _productService.GetAll(page, pageSize)
-                };
-                 
+                };  
             }
             else
             {

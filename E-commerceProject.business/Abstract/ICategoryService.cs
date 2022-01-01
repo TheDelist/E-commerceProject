@@ -6,7 +6,7 @@ using E_commerceProject.entity;
 
 namespace E_commerceProject.business.Abstract
 {
-    public interface ICategoryService
+    public interface ICategoryService : IValidator<Category>
     {
         Category GetById(int id);
         Category GetByIdWithProducts(int categoryId);

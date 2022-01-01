@@ -6,7 +6,7 @@ using E_commerceProject.entity;
 
 namespace E_commerceProject.business.Abstract
 {
-    public interface IProductService
+    public interface IProductService : IValidator<Product>
     {
         List<Product> GetProductByCategory(string name,int page,int pageSize);
         Product GetProductDetails(string productname);

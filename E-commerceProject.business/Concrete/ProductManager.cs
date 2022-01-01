@@ -17,6 +17,7 @@ namespace E_commerceProject.business.Concrete
             _productRepository=productRepository;
             
         }
+
         public int Count()
         {
            return _productRepository.Count();
@@ -40,7 +41,6 @@ namespace E_commerceProject.business.Concrete
         {
             return _productRepository.GetAll();
         }
-
 
         public Product GetById(int id)
         {
@@ -75,6 +75,19 @@ namespace E_commerceProject.business.Concrete
         public void Update(Product entity)
         {
             _productRepository.Update(entity);
+        }
+
+        public string ErrorMessage { get; set; }
+
+        public bool Validation(Product entity) // Extra business rules can be added here
+        {
+            var isValid = true;
+            // if(string.IsNullOrEmpty(entity.Name)) 
+            // {
+            //     ErrorMessage += "The Name field is required!\n";
+            //     isValid=false;
+            // }
+            return isValid;
         }
     }
 }
