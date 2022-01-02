@@ -145,5 +145,12 @@ C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.webui\obj\D
 C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Account\LoginFailed.cshtml.g.cs
 C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Account\LoginSuc.cshtml.g.cs
 C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
-C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Product\ShoppingCart.cshtml.g.cs
 C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Shared\_Layout3.cshtml.g.cs
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Cart\CartList.cshtml.g.cs
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Cart\Checkout.cshtml.g.cs
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Shared\_Layout4.cshtml.g.cs
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Cart\OrderCompleted.cshtml.g.cs
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Account\Profile.cshtml.g.cs
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Shared\_Layout5.cshtml.g.cs
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Shared\_navbar2.cshtml.g.cs
+C:\Users\berkc\E-commerceProject\E-commerceProject\E-commerceProject.webui\obj\Debug\net5.0\Razor\Views\Admin\UserError.cshtml.g.cs

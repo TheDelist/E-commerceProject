@@ -13,20 +13,24 @@
       <div class="col-lg-4 col-sm-6 col-12">
         <div class="widgets-wrap float-md-end">
           <div class="widget-header mr-3">
-            <a href="#" class="icon icon-sm rounded-circle border">
+            <a href="/Cart/CartList" class="icon icon-sm rounded-circle border">
               <i class="fa fa-shopping-cart"></i>
             </a>
           </div>
           <div class="widget-header icontext ">
-            <a href="#" class="icon icon-sm rounded-circle border">
+            <a href="/Account/Profile" class="icon icon-sm rounded-circle border">
               <i class="fa fa-user"></i>
             </a>
           </div>
           <div class="text">
             <span class="text-muted text-center">Welcome</span>
             <div>
-              <a class="User-Link" asp-controller="Account" asp-action="Login">Login</a>
-              <a class="User-Link" asp-controller="Account" asp-action="Register">Register</a>
+
+              <a class="User-Link btn" asp-controller="Account" asp-action="Login"><img style="width: 2rem;"
+                  src="~/img/login.png" alt="login">Login</a>
+
+              <a class="User-Link btn" asp-controller="Account" asp-action="Register"> <img style="width: 2rem;"
+                  src="~/img/register.png" alt="register">Register</a>
             </div>
           </div>
 

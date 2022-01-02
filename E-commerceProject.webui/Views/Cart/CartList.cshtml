@@ -1,0 +1,101 @@
+@model ShoppingCartListViewModel
+@{
+    int total_sum=0;
+}
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="h3">Orders</h1>
+        <hr>
+
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+
+                    <td style="width: 130px;">Image</td>
+                    <td>Name</td>
+                    <td style="width: 100px;">Price</td>
+
+                    <td style="width: 110px;">In Stock</td>
+                    <td style="width: 110px;text-align:center">Quantity</td>
+                    <td style="width: 150px;"></td>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Orders.Count > 0)
+                {
+                    @foreach (var item in Model.Products)
+                    {
+
+                            int sumperproduct=0;
+
+                        <tr>
+
+                            <td><img src="~/img/@item.ImageUrl" width="80"></td>
+                            <td>@item.Name</td>
+                            <td>@item.Price</td>
+
+                            <td>
+                                @if (@item.InStock)
+                                {
+                                    <i class="fas fa-check-circle"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-times-circle"></i>
+                                }
+                            </td>
+<td style="text-align:center">
+                            @foreach (var order in @Model.Orders)
+                            {
+
+                                if (@item.ProductId == order.ProductId)
+                                {
+                                     <form action="/Cart/increaseQuantity" method="POST">
+                                      <input type="hidden" name="UserId" value=@Model.User.CustomerID>
+                                      <input type="hidden" name="ProductId" value=@item.ProductId>
+                                      <input type="hidden" name="Quantity" value=@order.Quantity>
+                                     <button type="submit" class="btn-sm">  <i class="fa fa-plus px-2"></i></button>
+</form>
+                                    @order.Quantity
+                                    sumperproduct=@order.Quantity*Convert.ToInt32(@item.Price);
+
+                                    <form action="/Cart/decreaseQuantity" method="POST">
+                                    <input type="hidden" name="UserId" value=@Model.User.CustomerID>
+                                    <input type="hidden" name="ProductId" value=@item.ProductId>
+                                    <input type="hidden" name="Quantity" value=@order.Quantity>
+                                    <button type="submit" class="btn-sm">  <i class="fa fa-minus px-2"></i></button>
+</form>
+
+
+
+
+                                }
+                            }
+</td>
+
+                            <td>
+
+                                <form action="/Cart/deleteCartProduct" method="POST" style="display:inline;">
+                                    <input type="hidden" name="UserId" value="@Model.User.CustomerID">
+                                    <input type="hidden" name="ProductId" value="@item.ProductId">
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    total_sum+=sumperproduct;
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-warning">
+                        <h3>No Products</h3>
+                    </div>
+                }
+            </tbody>
+        </table>
+        <h3 style="text-align:right">Total Sum: @total_sum</h3>
+         <form action="/Cart/Checkout" method="POST" style="display:inline;">
+         <input type="hidden" name="TotalSum" value=@total_sum>
+        <button type="submit" style="float: right;" class="btn btn-primary btn-sm">Checkout</button></form>
+    </div>
+</div>

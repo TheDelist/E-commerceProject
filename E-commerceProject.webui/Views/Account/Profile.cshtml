@@ -1,0 +1,135 @@
+@model UserViewModel
+@{
+        ViewData["Title"] = "Profile";
+        Layout = "~/Views/Shared/_Layout5.cshtml";
+}
+<div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+                <div class="col-md-3 border-right">
+                        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img
+                                        class="rounded-circle mt-5" width="150px"
+                                        src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
+                                        class="font-weight-bold">@Model.User.Name</span><span
+                                        class="text-black-50">@Model.User.Email</span><span>
+                                </span></div>
+                </div>
+                <div class="col-md-5 border-right">
+                        <div class="p-3 py-5">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h4 class="text-right">Profile Settings</h4>
+                                </div>
+                                <div class="row mt-2">
+                                        <div class="col-md-6"><label class="labels">Name</label>
+                                                <p>@Model.User.Name</p>
+                                        </div>
+                                        <div class="col-md-6"><label class="labels">Surname</label>
+                                                <p>@Model.User.Surname</p>
+                                        </div>
+                                        <div class="row mt-3"></div>
+                                        <div class="col-md-12"><label class="labels">Username
+                                                </label></div>
+                                        <p>@Model.User.Username</p>
+                                        <div class="col-md-12"><label class="labels">Mobile
+                                                        Number</label></div>
+                                        <p>@Model.User.Phone</p>
+                                        <div class="col-md-12"><label class="labels">Address</label>
+                                                <p>@Model.User.Address</p>
+                                        </div>
+
+                                        <div class="col-md-12"><label class="labels">BirthDate
+                                                </label>
+                                                <p>@Model.User.BirthDate</p>
+                                        </div>
+                                        <div class="col-md-12"><label class="labels">Sex
+                                                </label>
+                                                @if (@Model.User.Sex == 0)
+                                                {
+                                                        <p>Female</p>
+                                                }
+
+                                                @if (@Model.User.Sex == 1)
+                                                {
+                                                        <p>Male</p>
+                                                }
+
+
+                                        </div>
+                                        <div class="col-md-12"><label class="labels">Email
+                                                </label>
+                                                <p>@Model.User.Email</p>
+                                        </div>
+
+
+
+
+
+
+                                </div>
+
+                        </div>
+                </div>
+        </div>
+        @if (@Model.OrderHistories.Count > 0)
+        {
+
+
+                <div class="col-md-12">
+                        <h3 class="h5 mb-4 text-center">Order History</h3>
+                        <div class="table-wrap">
+                                <table class="table">
+                                        <thead class="thead-primary">
+                                                <tr>
+
+                                                        <th>&nbsp;</th>
+                                                        <th>Product</th>
+                                                        <th>Date</th>
+                                                        <th>Price</th>
+                                                        <th>Quantity</th>
+                                                        <th>Total</th>
+
+
+                                                </tr>
+                                        </thead>
+                                        <tbody>@foreach (var item in @Model.OrderHistories)
+                                                {
+
+                                                        <tr class="alert" role="alert">
+
+                                                                <td>
+                                                                        <div class="img"
+                                                                style="background-image:url(images/product-1.png)">
+                                                                        </div>
+                                                                </td>
+                                                                <td>
+                                                                        <div class="name">
+                                                                                <span>@item.Product.Name </span>
+                                                                                <span>@item.Product.Description</span>
+                                                                        </div>
+                                                                </td>
+                                                                <td>
+                                                                        <div class="date">
+                                                                                <span class="fw-bold">@item.Date</span>
+                                                                        </div>
+                                                                </td>
+                                                                <td>$@item.Product.Price</td>
+                                                                <td class="quantity">
+                                                                        <div class="input-group">
+                                                                                <span
+                                                                        class="quantity form-control input-number">@item.Quantity</span>
+                                                                        </div>
+                                                                </td>
+                                                                <td>$@(item.Product.Price*item.Quantity)</td>
+
+                                                        </tr>
+                                                }
+
+                                        </tbody>
+                                </table>
+                        </div>
+                </div>
+        }
+        else
+        {
+                <h1>ORDER HISTORY IS EMPTY</h1>
+        }
+</div>

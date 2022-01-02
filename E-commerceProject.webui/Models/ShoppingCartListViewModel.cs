@@ -9,10 +9,8 @@ namespace E_commerceProject.webui.Models
     public class ShoppingCartListViewModel
     {
         public List<Product> Products { get; set; }
-        public ShoppingCartListViewModel()
-        {
-            List<Product> Products = new List<Product>();
-        }
 
+        public List<Order> Orders { get; set; }
+        public Account User { get; set; }
     }
 }

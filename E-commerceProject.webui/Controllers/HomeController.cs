@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using E_commerceProject.webui.Models;
 using E_commerceProject.business.Abstract;
+using E_commerceProject.data.Concrete.MSSQL;
 
 namespace E_commerceProject.webui.Controllers
 {
@@ -14,8 +15,9 @@ namespace E_commerceProject.webui.Controllers
     {
         private IProductService _productService;
 
-        public HomeController(IProductService productService){
-            _productService=productService;
+        public HomeController(IProductService productService)
+        {
+            _productService = productService;
         }
 
         //localhost:5000/home/index
@@ -23,7 +25,8 @@ namespace E_commerceProject.webui.Controllers
         {
             var productView = new ProductListViewModel()
             {
-                ProductList =_productService.GetHomePageProducts()    
+                ProductList = _productService.GetHomePageProducts(),
+                Account = SQLUserRepository.acc
             };
             return View(productView);
         }
@@ -32,7 +35,7 @@ namespace E_commerceProject.webui.Controllers
         {
             return View();
         }
-        
+
         public IActionResult Contact()
         {
             return View();

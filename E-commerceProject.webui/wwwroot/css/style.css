@@ -124,6 +124,9 @@ a:hover {
   top: -3px;
   right: -10px;
 }
+.hide {
+  display: none;
+}
 .widget-header:hover i {
   color: #3167eb;
 }

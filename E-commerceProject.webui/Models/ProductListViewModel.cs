@@ -21,5 +21,7 @@ namespace E_commerceProject.webui.Models
     {
         public PageInfo PageInfo { get; set; }
         public List<Product> ProductList { get; set; }
+
+        public Account Account { get; set; }
     }
 }

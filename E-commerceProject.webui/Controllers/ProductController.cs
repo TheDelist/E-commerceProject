@@ -15,7 +15,7 @@ namespace E_commerceProject.webui.Controllers
         private IProductService _productService;
         public ProductController(IProductService productService)
         {
-            _productService=productService;
+            _productService = productService;
         }
 
         //localhost/products/telefon?page=1
@@ -23,30 +23,32 @@ namespace E_commerceProject.webui.Controllers
         {
             const int pageSize = 3;
             ProductListViewModel productView;
-            
+
             if (string.IsNullOrEmpty(category))
-            { 
+            {
                 productView = new ProductListViewModel()
                 {
-                    PageInfo=new PageInfo(){
-                        TotalItems=_productService.Count(),
-                        CurrentPage=page,
-                        ItemPerPage=pageSize,
-                        CurrentCategories=category,
+                    PageInfo = new PageInfo()
+                    {
+                        TotalItems = _productService.Count(),
+                        CurrentPage = page,
+                        ItemPerPage = pageSize,
+                        CurrentCategories = category,
 
                     },
                     ProductList = _productService.GetAll(page, pageSize)
-                };  
+                };
             }
             else
             {
                 productView = new ProductListViewModel()
                 {
-                    PageInfo=new PageInfo(){
-                        TotalItems=_productService.GetCountByCategory(category),
-                        CurrentPage=page,
-                        ItemPerPage=pageSize,
-                        CurrentCategories=category,
+                    PageInfo = new PageInfo()
+                    {
+                        TotalItems = _productService.GetCountByCategory(category),
+                        CurrentPage = page,
+                        ItemPerPage = pageSize,
+                        CurrentCategories = category,
 
                     },
                     ProductList = _productService.GetProductByCategory(category, page, pageSize)
@@ -55,7 +57,8 @@ namespace E_commerceProject.webui.Controllers
             return View(productView);
         }
 
-        public IActionResult Details(string url){
+        public IActionResult Details(string url)
+        {
             if (string.IsNullOrEmpty(url))
             {
                 return NotFound();
@@ -69,12 +72,13 @@ namespace E_commerceProject.webui.Controllers
         }
 
         public IActionResult Search(string q)
-        {   
+        {
             var productView = new ProductListViewModel()
             {
                 ProductList = _productService.GetSearchResult(q)
             };
             return View(productView);
         }
+
     }
 }

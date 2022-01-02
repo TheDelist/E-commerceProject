@@ -15636,6 +15636,11 @@
   "RootNamespace": "E_commerceProject.webui",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Cart\\OrderCompleted.cshtml",
+      "TargetPath": "Views\\Cart\\OrderCompleted.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Shared\\_noproduct.cshtml",
       "TargetPath": "Views\\Shared\\_noproduct.cshtml",
       "FileKind": "mvc"
@@ -15656,13 +15661,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Shared\\_Layout4.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout4.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Shared\\_Layout2.cshtml",
       "TargetPath": "Views\\Shared\\_Layout2.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Product\\ShoppingCart.cshtml",
-      "TargetPath": "Views\\Product\\ShoppingCart.cshtml",
+      "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Cart\\CartList.cshtml",
+      "TargetPath": "Views\\Cart\\CartList.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15673,6 +15683,11 @@
     {
       "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Account\\Profile.cshtml",
+      "TargetPath": "Views\\Account\\Profile.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15711,6 +15726,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Admin\\UserError.cshtml",
+      "TargetPath": "Views\\Admin\\UserError.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Shared\\_search.cshtml",
       "TargetPath": "Views\\Shared\\_search.cshtml",
       "FileKind": "mvc"
@@ -15723,6 +15743,11 @@
     {
       "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Shared\\_categories.cshtml",
       "TargetPath": "Views\\Shared\\_categories.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Shared\\_Layout5.cshtml",
+      "TargetPath": "Views\\Shared\\_Layout5.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15746,6 +15771,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Cart\\Checkout.cshtml",
+      "TargetPath": "Views\\Cart\\Checkout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Shared\\_product.cshtml",
       "TargetPath": "Views\\Shared\\_product.cshtml",
       "FileKind": "mvc"
@@ -15763,6 +15793,11 @@
     {
       "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Product\\Details.cshtml",
       "TargetPath": "Views\\Product\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\berkc\\E-commerceProject\\E-commerceProject\\E-commerceProject.webui\\Views\\Shared\\_navbar2.cshtml",
+      "TargetPath": "Views\\Shared\\_navbar2.cshtml",
       "FileKind": "mvc"
     },
     {

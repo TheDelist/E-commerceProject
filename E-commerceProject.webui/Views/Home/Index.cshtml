@@ -15,6 +15,7 @@
               <figcaption class="pt-3">
                 <h5 class="title">Fast delivery</h5>
                 <p>Thanks to our special team, all products are shipped on the same day. </p>
+
               </figcaption>
             </figure> <!-- iconbox // -->
           </div><!-- col // -->
@@ -47,9 +48,9 @@
 
   <div class="row">
     <div class="col-md-3">
-      @await Component.InvokeAsync("Categories") 
+      @await Component.InvokeAsync("Categories")
     </div>
-    
+
     <div class="col-md-9">
       @if (Model.ProductList.Count == 0)
       {
@@ -65,11 +66,11 @@
             </div>
           }
         </div>
-      }  
+      }
     </div>
   </div>
 </div>
-  
+
 
 
 @section Scripts{

@@ -1,0 +1,125 @@
+@model CheckoutModelView
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "~/Views/Shared/_Layout4.cshtml";
+    int shippingCost = 0;
+}
+<div class="container">
+    <div class="row m-0">
+        <div class="col-md-7 col-12">
+            <div class="row">
+                <div class="col-12 mb-4">
+                    <div class="row box-right">
+                        <div class="col-md-8 ps-0 ">
+                            <p class="ps-3 textmuted fw-bold h6 mb-0">TOTAL RECIEVED</p>
+                            <p class="h1 fw-bold d-flex"> <span
+                                    class=" fas fa-dollar-sign textmuted pe-1 h6 align-text-top mt-1"></span>@Model.TotalSum
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 px-0 mb-4">
+                    <div class="box-right">
+                        <div class="d-flex pb-2">
+                            <p class="fw-bold h7">Shipping Companies</p>
+
+                        </div>
+                        <div class="p-2">
+
+                            @foreach (var item in @Model.Shippers)
+                            {
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="Shipper" id="Shipper"
+                                    value="@item.ShipperID" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        @item.CompanyName <span class="fw-bold badge bg-primary">$@item.Price</span>
+                                    </label>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 px-0">
+                    <div class="box-right">
+                        <div class="d-flex mb-2">
+                            <p class="fw-bold">Shipping Address</p>
+                            <p class="ms-auto textmuted"><span class="fas fa-times"></span></p>
+                        </div>
+                        <div class="d-flex mb-2">
+
+                        </div>
+                        <div class="row">
+
+
+                            <div class="col-6">
+                                <p>Address</p>
+                                <p>@Model.User.Address</p>
+                            </div>
+                            <div class="col-6">
+                                <p>Phone</p>
+                                <p>@Model.User.Phone</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 col-12 ps-md-5 p-0 ">
+            <div class="box-left">
+                <p class="textmuted h8">Invoice</p>
+                <p class="fw-bold h7">@Model.User.Name</p>
+                <div class="h8">
+                    <div class="row m-0 border mb-3">
+                        <div class="col-6 h8 pe-0 ps-2">
+                            <p class="textmuted py-2">Items</p> <span class="d-block py-2 border-bottom">Total
+                                Price</span> <span class="d-block py-2">Shipping Cost</span>
+                        </div>
+
+                        <div class="col-4 p-0 text-center">
+                            <p class="textmuted p-2">Total</p> <span class="d-block py-2 border-bottom"><span
+                                    class="fas fa-dollar-sign"></span>@Model.TotalSum</span> <span
+                                class="d-block py-2"><span class="fas fa-dollar-sign"></span>@shippingCost</span>
+                        </div>
+                    </div>
+                    <div class="d-flex h7 mb-2">
+                        <p class="">Total Amount</p>
+                        <p class="ms-auto"><span class="fas fa-dollar-sign"></span>@Model.TotalSum</p>
+                    </div>
+                    <div class="h8 mb-5">
+                        <p class="textmuted">Thank you for your order.</p>
+                    </div>
+                </div>
+                <div class="">
+                    <p class="h7 fw-bold mb-1">Pay this Invoice</p>
+                    <p class="textmuted h8 mb-2">Make payment for this invoice by filling in the details</p>
+                    <div class="form">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card border-0"> <input class="form-control ps-5" type="text"
+                                        placeholder="Card number"> <span class="far fa-credit-card"></span> </div>
+                            </div>
+                            <div class="col-6"> <input class="form-control my-3" type="text" placeholder="MM/YY"> </div>
+                            <div class="col-6"> <input class="form-control my-3" type="text" placeholder="cvv"> </div>
+
+                        </div>
+                        <form action="/Cart/OrderCompleted" method="POST" style="" class="pb-5">
+                            <button type="submit" style="float: right;" class="btn btn-primary d-block h8">PAY <span
+                                    class="fas fa-dollar-sign ms-2"></span>@Model.TotalSum<span
+                                    class="ms-3 fas fa-arrow-right"></span></button>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    var a = document.querySelector('input[name="Shipper"]:checked').value;
+    console.log(a);
+    @shippingCost = a;
+</script>

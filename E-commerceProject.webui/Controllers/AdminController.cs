@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using E_commerceProject.business.Abstract;
+using E_commerceProject.data.Concrete.MSSQL;
 using E_commerceProject.entity;
 using E_commerceProject.webui.Models;
 using Microsoft.AspNetCore.Http;
@@ -25,18 +26,42 @@ namespace E_commerceProject.webui.Controllers
 
         public IActionResult ProductList()
         {
-            return View(new ProductListViewModel
+            if (SQLUserRepository.acc == null)
             {
-                ProductList = _productService.GetAll()
-            });
+                return RedirectToAction("Login", "Account");
+            }
+            else if (SQLUserRepository.acc.Type.Equals("admin"))
+            {
+                return View(new ProductListViewModel
+                {
+                    ProductList = _productService.GetAll()
+                });
+            }
+            else
+            {
+                return View("UserError");
+            }
+
         }
 
         public IActionResult CategoryList()
         {
-            return View(new CategoryListViewModel
+            if (SQLUserRepository.acc == null)
             {
-                Categories = _categoryService.GetAll()
-            });
+                return RedirectToAction("Login", "Account");
+            }
+            else if (SQLUserRepository.acc.Type.Equals("admin"))
+            {
+
+                return View(new CategoryListViewModel
+                {
+                    Categories = _categoryService.GetAll()
+                });
+            }
+            else
+            {
+                return View("UserError");
+            }
         }
 
         [HttpGet]
@@ -67,24 +92,25 @@ namespace E_commerceProject.webui.Controllers
                         CategoryId = Convert.ToInt32(selectedItem.Value)
                     };
 
-                    if (file!=null)
+                    if (file != null)
                     {
                         var extension = Path.GetExtension(file.FileName);
                         var randomName = string.Format($"{Guid.NewGuid()}{extension}");
                         newProduct.ImageUrl = randomName;
-                        var path = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot\\img",randomName);
+                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", randomName);
 
-                        using(var stream = new FileStream(path, FileMode.Create))
+                        using (var stream = new FileStream(path, FileMode.Create))
                         {
                             await file.CopyToAsync(stream);
                         }
                         _productService.Create(newProduct);
                         CreateMessage($"{newProduct.Name} was created!", "success");
                         return RedirectToAction("ProductList");
-                    } else
+                    }
+                    else
                     {
                         CreateMessage($"Please upload a image!", "danger");
-                    }  
+                    }
                 }
             }
             product.allcategories = AddCategoryList();
@@ -177,24 +203,24 @@ namespace E_commerceProject.webui.Controllers
                     entity.Description = model.Description;
                     entity.Url = model.Url;
                     entity.Quantity = model.Quantity;
-                    // entity.ImageUrl = model.ImageUrl;    
+                    // entity.ImageUrl = model.ImageUrl;
                     entity.CategoryId = model.CategoryId;
                     entity.InStock = model.InStock;
                     entity.IsHome = model.IsHome;
 
-                    if (file!=null)
+                    if (file != null)
                     {
                         var extension = Path.GetExtension(file.FileName);
                         var randomName = string.Format($"{Guid.NewGuid()}{extension}");
                         entity.ImageUrl = randomName;
-                        var path = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot\\img",randomName);
+                        var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", randomName);
 
-                        using(var stream = new FileStream(path, FileMode.Create))
+                        using (var stream = new FileStream(path, FileMode.Create))
                         {
                             await file.CopyToAsync(stream);
                         }
                     }
-                    
+
                     _productService.Update(entity);
 
                     CreateMessage($"{entity.Name} was updated!", "success");
@@ -269,7 +295,7 @@ namespace E_commerceProject.webui.Controllers
                 _categoryService.Delete(categoryId);
             }
             var entity2 = _categoryService.GetById(categoryId);
-            if(entity2 == null)
+            if (entity2 == null)
             {
                 CreateMessage($"{entity.Name} was deleted!", "danger");
                 return RedirectToAction("CategoryList");
@@ -289,7 +315,7 @@ namespace E_commerceProject.webui.Controllers
             };
             TempData["message"] = JsonConvert.SerializeObject(msg);
         }
-        
+
         public List<SelectListItem> AddCategoryList()
         {
             List<SelectListItem> allCategories = new List<SelectListItem>();

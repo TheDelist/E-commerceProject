@@ -2,7 +2,7 @@
 
 using System;
 
-namespace E_commerceProject.webui.Models
+namespace E_commerceProject.entity
 {
     public class Account
     {
@@ -10,7 +10,7 @@ namespace E_commerceProject.webui.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
-        public bool Sex { get; set; }
+        public int Sex { get; set; }
         public string Type { get; set; }
         public DateTime BirthDate { get; set; }
         public string Address { get; set; }

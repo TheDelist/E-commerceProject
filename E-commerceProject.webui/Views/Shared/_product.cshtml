@@ -11,9 +11,12 @@
     </small>
   </div>
   <div class="card-footer text-center">
-    <a asp-controller="Product" asp-action="Details" asp-route-url=@Model.Url
-    class="btn btn-primary btn-sm">Details</a>
-    <a asp-controller="Product" asp-action="addtocart" asp-route-id=@Model.ProductId
-    class="btn btn-primary btn-sm">Add To Cart</a>
+    <a asp-controller="Product" asp-action="Details" asp-route-url=@Model.Url class="btn btn-primary btn-sm">Details</a>
+    <form action="/Cart/addToCart" method="POST" style="display:inline;">
+      <input type="hidden" name="ProductId" value=@Model.ProductId>
+      <input type="hidden" name="Quantity" value=1>
+      <input type="hidden" name="PreviousPage" value="ProductsPage">
+      <button type="submit" class="btn btn-primary btn-sm">Add To Cart</button>
+    </form>
   </div>
 </div>
