@@ -130,7 +130,7 @@ namespace E_commerceProject.data.Concrete.MSSQL
                     reader.Read();
                     if (reader.HasRows)
                     {
-                        DateTime birthDate = new DateTime(2008, 5, 1, 8, 30, 52);
+                        DateTime birthDate = new DateTime(2000, 05, 04);
                         if (reader["BirthDate"] is DateTime)
                         {
                             birthDate = (DateTime)reader["BirthDate"];
@@ -185,13 +185,10 @@ namespace E_commerceProject.data.Concrete.MSSQL
                     reader.Read();
                     if (reader.HasRows)
                     {
-                        DateTime birthDate = new DateTime(2008, 5, 1, 8, 30, 52);
-                        if (reader["BirthDate"] is DateTime)
-                        {
-                            birthDate = (DateTime)reader["BirthDate"];
 
-                        }
 
+                        var birthD = reader["BirthDate"].ToString().Split(" ");
+                        var birthD2 = birthD[0].Split(".");
 
                         acc = new Account()
 
@@ -201,8 +198,8 @@ namespace E_commerceProject.data.Concrete.MSSQL
                             Email = reader["Email"].ToString(),
                             Sex = int.Parse(reader["Sex"].ToString()),
                             Type = reader["Type"]?.ToString(),
-                            BirthDate = DateTime.ParseExact("2009-05-08 14:40:52,531", "yyyy-MM-dd HH:mm:ss,fff",
-                                       System.Globalization.CultureInfo.InvariantCulture),
+                            BirthDate = new DateTime(int.Parse(birthD2[2]), int.Parse(birthD2[1]), int.Parse(birthD2[0])),
+
                             Address = reader["Address"].ToString(),
                             Phone = reader["Phone"].ToString(),
                             Password = reader["Password"].ToString(),

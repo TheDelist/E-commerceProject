@@ -55,7 +55,7 @@ namespace E_commerceProject.data.Concrete.MSSQL
                 try
                 {
                     connection.Open();
-                    Console.WriteLine(Quantity + "quantity");
+
                     string sql = "UPDATE CartItems SET Quantity=@Quantity WHERE UserId = @id and ProductId=@ProductId ";
                     SqlCommand command = new SqlCommand(sql, connection);
 
@@ -248,7 +248,7 @@ namespace E_commerceProject.data.Concrete.MSSQL
                 try
                 {
                     connection.Open();
-                    Console.WriteLine(id + "iddddddd");
+
                     string sql = "SELECT * FROM CartItems where UserId=@id";
                     SqlCommand command = new SqlCommand(sql, connection);
                     command.Parameters.AddWithValue("@id", id);
