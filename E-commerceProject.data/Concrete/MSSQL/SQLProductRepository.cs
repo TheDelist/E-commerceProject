@@ -354,7 +354,8 @@ namespace E_commerceProject.data.Concrete.MSSQL
                 try
                 {
                     connection.Open();
-                    string sql = "SELECT COUNT(Categories.CategoryID) FROM Categories INNER JOIN products ON products.CategoryID = Categories.CategoryID where Url IN (@name);";
+                    /*     string sql = "SELECT COUNT(Categories.CategoryID) FROM Categories INNER JOIN products ON products.CategoryID = Categories.CategoryID where Url IN (@name);"; */
+                    string sql = "SELECT COUNT(CategoryID) FROM CategoryProduct WHERE Url IN (@name);"; // Using  CategoryProduct View
                     SqlCommand command = new SqlCommand(sql, connection);
                     command.Parameters.AddWithValue("@name", category);
 

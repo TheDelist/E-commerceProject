@@ -108,6 +108,10 @@ namespace E_commerceProject.webui.Controllers
         public IActionResult addToCart(int ProductId, int Quantity, String PreviousPage)
 
         {
+            if (SQLUserRepository.acc == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
 
             var order = new Order()
             {

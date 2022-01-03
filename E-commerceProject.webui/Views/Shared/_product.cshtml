@@ -1,7 +1,9 @@
 @model Product
 
 <div class="card mb-2">
-  <img class="card-img-top" src="~/img/@Model.ImageUrl" alt="">
+  <a href="@Model.Url">
+    <img class="card-img-top" src="~/img/@Model.ImageUrl"></a>
+
   <div class="card-body">
     <h5 class="card-title">@Model.Name</h5>
     <small class="text-muted">
