@@ -26,32 +26,29 @@ In addition, we supported each other when necessary and repaired the problems.
 ## My Contribution:
 * DB Design
 * DB Connection
-* Product Create (SQL)
-* Product Get By Id(SQL)
-* GetProductDetails (SQL)
-* GetProductsByCategory (SQL)
-* GetSearchResult (SQL)
-* GetCountByCategory (SQL)
-* GetHomePageProducts (SQL)
-* SetQuantity Order (SQL)
-* Create Order (SQL)
-* getOrderHistoryList Order (SQL)
-* CreateOrderHistory Order (SQL)
-* Count Order (SQL)
-* GetAll Order (SQL)
-* GetsById Order (SQL)
-* GetAll Shipper (SQL)
+* SQL Order Repository
+* SQL Product Repository
+* SQL Shipper Repository
+* Order Model
+* Order History Model
+* Product Model
+* Shipper Model
+* Shopping Cart Model
+* Order Manager 
+* Product Manager
+* Shipper Manager
+* Product Controller
+* Home Controller
+* Cart Controller
+* Account Controller
 * Repository and Service interface 
-* Product, Category Model
-* Layer Create(business,entity,data,WebUI)
-* Business Layer Product is  done 
-* Entity Layer is all done
+* Layer Create(Business, Entity, Data,WebUI)
 * WebUI/View/Shared  all done
-* Product Details (Page)
-* Admin product Create (Page)
-* Products Page done
-* Home Page done
-* Shopping cart page
+* Product Details Page
+* Admin product Create Page
+* Products Page 
+* Home Page 
+* Shopping Cart page
 * Checkout page
 * Profile page
 * Order Completed page
