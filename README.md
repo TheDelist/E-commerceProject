@@ -53,6 +53,7 @@ In addition, we supported each other when necessary and repaired the problems.
 * Home Page done
 * Shopping cart page
 * Checkout page
+* Profile page
 * OrderCompleted page
 
 ## Used technologies:
