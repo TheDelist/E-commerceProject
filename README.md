@@ -54,7 +54,7 @@ In addition, we supported each other when necessary and repaired the problems.
 * Shopping cart page
 * Checkout page
 * Profile page
-* OrderCompleted page
+* Order Completed page
 
 ## Used technologies:
 * .NET 5.0
